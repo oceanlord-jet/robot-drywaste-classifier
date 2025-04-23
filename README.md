@@ -30,7 +30,7 @@ Uses **EfficientNetB0** to classify waste images into three categories: `metal`,
 - Augmentation and training  
 - Evaluation and interpretability
 
-[Explore the Model →](./Model/README.md)
+[Explore the Model →](./Model)
 
 ---
 
@@ -38,7 +38,7 @@ Uses **EfficientNetB0** to classify waste images into three categories: `metal`,
 
 Controls the **Niryo One robotic arm** to perform real-time sorting. It captures an image, classifies it using the trained model, and moves the object to the appropriate bin. It is designed for reliability and ease of integration with physical systems.
 
-[Explore the Robot Module →](./Robot/README.md)
+[Explore the Robot Module →](./Robot)
 
 ---
 
@@ -46,7 +46,7 @@ Controls the **Niryo One robotic arm** to perform real-time sorting. It captures
 
 Allows users to test the sorting process in a **virtual environment** when access to physical hardware is limited. It mimics the classification and decision logic of the robot workflow.
 
-[Explore the Simulation →](./Simulation/README.md)
+[Explore the Simulation →](./Simulation)
 
 ---
 
