@@ -2,76 +2,81 @@
 
 **Automated Garbage Classification Robot**
 
-This project presents an automated garbage classification system utilizing a Niryo robotic arm integrated with a high-resolution camera to identify, classify, and sort waste items into designated containers for paper, plastic, and metal. The system leverages advanced machine learning techniques, specifically EfficientNetB0 for object classification and YOLOv8 for multi-object detection. The integration of these technologies enables real-time, accurate sorting operations. Comprehensive testing reveals strong system reliability and sorting precision, making a substantial contribution to efficient, scalable, and environmentally sustainable waste management solutions.
+This repository implements an end-to-end system for automatically classifying and sorting dry waste using a Niryo One robotic arm, deep learning-based vision models, and both real-world and simulated environments.
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```plaintext
 .
-├── Model/                     # Image classification pipeline
-│   └── README.md              # Details on model training and evaluation
-├── Robot/                     # Niryo One robot integration
-│   └── README.md              # Instructions for running on real hardware
-├── Simulation/                # Virtual testing and visualization
-│   └── README.md              # Description of the simulated sorting logic
-└── README.md                  # (This file) Overview of the full robotics project
+├── Model/                                  # Image classification pipeline
+│   ├── README.md                           # Model training, evaluation, and interpretability
+│   └── garbage-classification.ipynb        # Jupyter notebook with data exploration and training
+├── Robot/                                  # Niryo One integration and hardware control
+│   ├── README.md                           # Setup and usage instructions for physical hardware
+│   ├── classify_function.py                # Image classification helper using EfficientNetB0
+│   ├── watchy.py                           # Main sorting workflow controlling the robot
+│   └── captured_image.jpg                  # Example snapshot from the robot camera
+├── Simulation/                             # Virtual testing environment
+│   └── README.md                           # Simulation setup and logic for sorting pipeline
+└── README.md                               # Overview of full robotics project (this file)
 ```
 
 ---
 
-## 🔍 What Each Part Does
+## 🔍 Module Descriptions
 
 ### 1. Model
 
-Uses **EfficientNetB0** to classify waste images into three categories: `metal`, `paper`, and `plastic`. Grad-CAM is used to visualize where the model focuses its attention, helping validate its predictions. Includes:
-- Data preprocessing  
-- Augmentation and training  
-- Evaluation and interpretability
-
-[Explore the Model →](./Model)
+Contains the deep learning pipeline for waste classification:
+- **garbage-classification.ipynb**: Data preprocessing, augmentation, model training with EfficientNetB0, evaluation metrics, and Grad-CAM interpretability.
+- **README.md**: Detailed instructions for reproducing training experiments and visualizing model attention.
 
 ---
 
 ### 2. Robot
 
-Controls the **Niryo One robotic arm** to perform real-time sorting. It captures an image, classifies it using the trained model, and moves the object to the appropriate bin. It is designed for reliability and ease of integration with physical systems.
+Implements the real-world sorting system:
+- **README.md**: Prerequisites, network setup (default IP `10.10.10.10`), saving Niryo Studio poses (`watch`, `pick`, `metalbin`, `paperbin`, `plasticbin`), and running scripts.
+- **classify_function.py**: Loads the Keras classification model (`best_efficientnetb0_garbage.keras`) to predict waste categories.
+- **watchy.py**: Coordinates pose movements, image capture, classification, and bin placement via the Niryo Python API (pyniryo2).
+- **captured_image.jpg**: Sample image used for testing classification without hardware.
 
-[Explore the Robot Module →](./Robot)
+Model weights are located in `Robot/best_efficientnetb0_garbage.keras/`:
+```plaintext
+Robot/best_efficientnetb0_garbage.keras/
+├── config.json            # Model architecture configuration
+├── model.weights.h5       # Trained weights file
+└── metadata.json          # Training metadata and environment details
+```
 
 ---
 
 ### 3. Simulation
 
-Allows users to test the sorting process in a **virtual environment** when access to physical hardware is limited. It mimics the classification and decision logic of the robot workflow.
-
-[Explore the Simulation →](./Simulation)
+Provides a virtual testbed when hardware is unavailable:
+- **README.md**: Instructions for running the simulation and visualizing the sorting workflow in a virtual environment.
 
 ---
 
 ## 🛠 Technologies Used
 
-- Python 3.x  
-- TensorFlow / Keras  
-- OpenCV  
-- Ultralytics YOLO (in Model)  
-- pyniryo2 (in Robot)  
-- Jupyter Notebooks  
-- Linux (WSL/Ubuntu) or Windows  
+- **Python 3.x**
+- **TensorFlow / Keras** (EfficientNetB0)
+- **OpenCV**
+- **Ultralytics YOLOv8** (for multi-object detection extension)
+- **pyniryo2** (Niryo One Python API)
+- **Jupyter Notebooks**
+- **OS**: Linux (WSL/Ubuntu) or Windows
 
 ---
 
-## 🚀 Goals
+## 🚀 Future Enhancements
 
-- Automate waste classification and sorting  
-- Support sustainable waste management practices  
-- Provide a modular framework for both physical and simulated testing  
-- Encourage further research in smart robotics and machine learning for environmental applications
+- Expand classification to additional materials like glass and organic waste.
+- Integrate YOLOv8 for simultaneous multi-object detection and sorting.
+- Develop a real-time dashboard for monitoring robot performance.
+- Port the system to edge devices (e.g., NVIDIA Jetson Nano, Raspberry Pi).
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
