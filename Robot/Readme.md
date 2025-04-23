@@ -1,1 +1,4 @@
+# Robot Dry Waste Classifier
+
+The Robot Dry Waste Classifier is a Neo robot designed to revolutionize waste management by automating the classification of dry waste. This robot is equipped with advanced sensors and a camera to capture images of waste materials, which it processes to determine their type. Built with a focus on efficiency and reliability, making it an ideal solution for waste segregation in industrial and urban settings. The project includes Python scripts for controlling the robot's operations, monitoring its performance, and testing its capabilities. By integrating cutting-edge robotics and machine learning, the Neo robot aims to streamline waste management processes and promote sustainable practices.
 
