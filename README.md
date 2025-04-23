@@ -6,7 +6,7 @@ This repository implements an end-to-end system for automatically classifying an
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```plaintext
 .
@@ -25,7 +25,7 @@ This repository implements an end-to-end system for automatically classifying an
 
 ---
 
-## 🔍 Module Descriptions
+## Module Descriptions
 
 ### 1. Model
 
