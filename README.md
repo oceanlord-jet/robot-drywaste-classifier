@@ -29,9 +29,23 @@ This repository implements an end-to-end system for automatically classifying an
 
 ### 1. Model
 
-Contains the deep learning pipeline for waste classification:
-- **garbage-classification.ipynb**: Data preprocessing, augmentation, model training with EfficientNetB0, evaluation metrics, and Grad-CAM interpretability.
-- **README.md**: Detailed instructions for reproducing training experiments and visualizing model attention.
+Contains the deep learning pipeline and dataset organization for waste classification:
+
+```plaintext
+Model/
+├── README.md                   # Detailed instructions for training and evaluation
+├── garbage-classification.ipynb# Jupyter notebook with data exploration and model training
+├── global-classification/      # Raw image dataset organized by category
+│   ├── metal/                  # Metal waste images
+│   ├── plastic/                # Plastic waste images
+│   └── paper/                  # Paper waste images
+└── test/                       # Test images for evaluation
+```
+
+- **README.md**: Instructions for reproducing the training experiments and visualizing model attention via Grad-CAM.
+- **garbage-classification.ipynb**: Data preprocessing, augmentation, training with EfficientNetB0, evaluation metrics, and Grad-CAM interpretability.
+- **global-classification/**: Contains categorized raw images for training and validation.
+- **test/**: Contains holdout images used for final model evaluation.
 
 ---
 
@@ -60,8 +74,6 @@ Provides a virtual testbed when hardware is unavailable:
 
 ---
 
-## 🛠 Technologies Used
-
 - **Python 3.x**
 - **TensorFlow / Keras** (EfficientNetB0)
 - **OpenCV**
@@ -80,3 +92,8 @@ Provides a virtual testbed when hardware is unavailable:
 - Port the system to edge devices (e.g., NVIDIA Jetson Nano, Raspberry Pi).
 
 ---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
