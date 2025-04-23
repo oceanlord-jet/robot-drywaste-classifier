@@ -92,8 +92,3 @@ Provides a virtual testbed when hardware is unavailable:
 - Port the system to edge devices (e.g., NVIDIA Jetson Nano, Raspberry Pi).
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
