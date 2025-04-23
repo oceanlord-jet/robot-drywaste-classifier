@@ -105,12 +105,6 @@ TensorFlow is configured to run on CPU only for broader hardware compatibility.
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 ## Acknowledgements
 
 - Niryo One Robot  
