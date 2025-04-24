@@ -18,8 +18,14 @@ This repository implements an end-to-end system for automatically classifying an
 │   ├── classify_function.py                # Image classification helper using EfficientNetB0
 │   ├── watchy.py                           # Main sorting workflow controlling the robot
 │   └── captured_image.jpg                  # Example snapshot from the robot camera
-├── Simulation/                             # Virtual testing environment
-│   └── README.md                           # Simulation setup and logic for sorting pipeline
+├── Simulation/                             # Virtual testing environment in Webots
+│   ├── worlds/                             # Simulation world definitions
+│   │   ├── arm_robot.wbt                   # Main world file with UR5e setup and environment
+│   │   └── .arm_robot.wbproj              # Webots project configuration file
+│   └── controllers/                        # Robot control scripts
+│       └── simple_pick_place/              # Pick and place controller
+│           ├── simple_pick_place.py        # Main robot control logic
+│           └── __init__.py 
 └── README.md                               # Overview of full robotics project (this file)
 ```
 
@@ -69,9 +75,29 @@ Robot/best_efficientnetb0_garbage.keras/
 
 ### 3. Simulation
 
-Provides a virtual testbed when hardware is unavailable:
-- **README.md**: Instructions for running the simulation and visualizing the sorting workflow in a virtual environment.
+The simulation implements a robotic waste classification system with the following components:
 
+1. **Robot Setup**:
+   - Universal Robots UR5e robotic arm mounted on a fixed base
+   - Robotiq 3-finger gripper for object manipulation
+   - JetBot Raspberry Pi Camera for object detection and classification
+
+2. **Environment**:
+   - Factory-themed background with proper lighting
+   - 10x10 meter arena with parquet flooring
+   - Three colored boxes representing different types of waste:
+     - Red box
+     - Green box
+     - Blue box
+   - Three designated bins for waste sorting
+
+3. **Functionality**:
+   - The robot uses computer vision to identify waste objects
+   - Pick and place operations are simulated with precise joint control
+   - The gripper can perform basic open/close operations
+   - Objects are sorted into their respective bins based on classification
+
+The simulation serves as a testbed for developing and validating waste classification algorithms and robot control strategies before deployment on physical hardware.
 ---
 
 - **Python 3.x**
